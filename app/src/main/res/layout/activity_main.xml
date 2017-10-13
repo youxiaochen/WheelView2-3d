@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <you.xiaochen.wheel.WheelView
+            android:id="@+id/wv1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:wheelGravity="left"
+            app:wheelItemCount="4"
+            app:wheelDividerSize="42dp"
+            app:dividerColor="#55000000"
+            app:wheelItemSize="40dp"/>
+
+        <you.xiaochen.wheel.WheelView
+            android:id="@+id/wv2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:wheelGravity="right"
+            app:wheelItemCount="4"
+            app:wheelDividerSize="42dp"
+            app:dividerColor="#55000000"
+            app:wheelItemSize="40dp"/>
+
+    </LinearLayout>
+
+    <you.xiaochen.wheel.WheelView
+        android:id="@+id/wv3"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        app:wheelItemCount="3"
+        app:wheelOrientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        app:dividerColor="#00000000"
+        app:wheelItemSize="56dp"/>
+
+</LinearLayout>
