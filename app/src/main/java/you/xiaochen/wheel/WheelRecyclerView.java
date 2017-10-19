@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Shader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -241,6 +242,8 @@ public class WheelRecyclerView extends RecyclerView {
     @Override
     protected void dispatchDraw(Canvas c) {
         super.dispatchDraw(c);
+        //设置抗锯齿,但是好像无效,有知道如何解决的,请不吝赐教
+        c.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
         if (orientation == LinearLayoutManager.VERTICAL) {
             float dividerOff = (getHeight() - dividerSize) / 2.0f;
             float firstY = getTop() + dividerOff;
@@ -248,7 +251,9 @@ public class WheelRecyclerView extends RecyclerView {
             float secondY = getBottom() - dividerOff;
             c.drawLine(getLeft(), secondY, getRight(), secondY, dividerPaint);
 
-            //画渐变阴影
+            //如果需要画渐变阴影,取消注释的代码
+
+        /*
             float rectTop = firstY - wheelRadio;
             float rectBottom = secondY + wheelRadio;
             if (topOrLeftGradient == null) {
@@ -260,7 +265,7 @@ public class WheelRecyclerView extends RecyclerView {
                 rightOrBottomPaint.setShader(rightOrBottomGradient);
             }
             c.drawRect(getLeft(), rectTop, getRight(), firstY, topOrLeftPaint);
-            c.drawRect(getLeft(), secondY, getRight(), rectBottom, rightOrBottomPaint);
+            c.drawRect(getLeft(), secondY, getRight(), rectBottom, rightOrBottomPaint);*/
         } else {
             float dividerOff = (getWidth() - dividerSize) / 2.0f;
             float firstX = getLeft() + dividerOff;
@@ -268,8 +273,8 @@ public class WheelRecyclerView extends RecyclerView {
             float secondX = getRight() - dividerOff;
             c.drawLine(secondX, getTop(), secondX, getBottom(), dividerPaint);
 
-            //画渐变阴影
-            float rectLeft = firstX - wheelRadio;
+            //如果需要画渐变阴影,取消注释的代码
+           /* float rectLeft = firstX - wheelRadio;
             float rectRight = secondX + wheelRadio;
             if (topOrLeftGradient == null) {
                 topOrLeftGradient = new LinearGradient(firstX, 0, rectLeft, 0, CENTER_COLOR, EDGE_COLOR, Shader.TileMode.MIRROR);
@@ -280,7 +285,7 @@ public class WheelRecyclerView extends RecyclerView {
                 rightOrBottomPaint.setShader(rightOrBottomGradient);
             }
             c.drawRect(rectLeft, getTop(), firstX, getBottom(), topOrLeftPaint);
-            c.drawRect(secondX, getTop(), rectRight, getBottom(), rightOrBottomPaint);
+            c.drawRect(secondX, getTop(), rectRight, getBottom(), rightOrBottomPaint);*/
         }
     }
 
