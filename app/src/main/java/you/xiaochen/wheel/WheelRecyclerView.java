@@ -242,7 +242,6 @@ public class WheelRecyclerView extends RecyclerView {
     @Override
     protected void dispatchDraw(Canvas c) {
         super.dispatchDraw(c);
-        //设置抗锯齿,但是好像无效,有知道如何解决的,请不吝赐教
         c.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
         if (orientation == LinearLayoutManager.VERTICAL) {
             float dividerOff = (getHeight() - dividerSize) / 2.0f;
